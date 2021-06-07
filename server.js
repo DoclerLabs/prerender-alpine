@@ -1,8 +1,14 @@
 const prerender = require('prerender');
 const prMemoryCache = require('prerender-memory-cache');
 
+const chromeFlags = ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--disable-dev-shm-usage']
+
+if (process.env.PROXY_SERVER) {
+    chromeFlags.push(`--proxy-server=${process.env.PROXY_SERVER}`)
+}
+
 const server = prerender({
-    chromeFlags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222', '--hide-scrollbars', '--disable-dev-shm-usage'],
+    chromeFlags,
     forwardHeaders: true,
     chromeLocation: '/usr/bin/chromium-browser'
 });
