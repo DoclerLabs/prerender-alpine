@@ -4,7 +4,8 @@
   "description": "lightweight prerender container built on alpine linux",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "publish": "docker build --no-cache -t prerender ./Dockerfile && docker tag prerender dhlabs/prerender:latest && docker push wintercounter/mhy:latest"
   },
   "dependencies": {
     "prerender": "5.12.0",

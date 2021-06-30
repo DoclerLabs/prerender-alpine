@@ -27,7 +27,7 @@ curl http://localhost:3000/render?url=https://www.example.com/
 ## Prerender plugins
 
 A few default plugins have been activated by default (see `server.js`):
-- https://github.com/prerender/prerender/blob/master/lib/plugins/blacklist.js
+- https://github.com/prerender/prerender/blob/master/lib/plugins/whitelist.js
 - https://github.com/prerender/prerender/blob/master/lib/plugins/httpHeaders.js
 - https://github.com/prerender/prerender/blob/master/lib/plugins/removeScriptTags.js
 
