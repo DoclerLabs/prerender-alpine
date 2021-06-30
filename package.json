@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "publish": "docker build --no-cache -t prerender ./Dockerfile && docker tag prerender dhlabs/prerender:latest && docker push wintercounter/mhy:latest"
+    "publish": "docker build --no-cache -t prerender ./ && docker tag prerender dhlabs/prerender:latest && docker push dhlabs/prerender:latest"
   },
   "dependencies": {
     "prerender": "5.12.0",
