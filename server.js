@@ -18,7 +18,17 @@ if (memCache === 1) {
     server.use(prMemoryCache);
 }
 
-server.use(prerender.whitelist());
+server.use({
+    requestReceived: (req, res, next) => {
+        const ALLOWED_DOMAINS = (process.env.ALLOWED_DOMAINS && process.env.ALLOWED_DOMAINS.split(',')) || [];
+
+        if (ALLOWED_DOMAINS.some((domain) => new RegExp(`^([a-z]+\.)?${domain.replace('.', '\.')}$`).test(domain))) {
+            next();
+        } else {
+            res.send(404);
+        }
+    }
+});
 server.use(prerender.httpHeaders());
 server.use(prerender.removeScriptTags());
 
